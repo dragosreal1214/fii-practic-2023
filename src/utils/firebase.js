@@ -10,13 +10,14 @@ import {
 } from "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDLeYV0RtXJpUH5w4C4ukdJEQJbDiIWRk4",
-  authDomain: "fii-practic-memes.firebaseapp.com",
-  projectId: "fii-practic-memes",
-  storageBucket: "fii-practic-memes.appspot.com",
-  messagingSenderId: "429868905828",
-  appId: "1:429868905828:web:ffb3447a7ecbc69b9b7671",
-}
+  apiKey: "AIzaSyB1Z6QdEGJZTJ8kZ1VDGpsaHdMOz9q5byU",
+  authDomain: "fii-practic-2023-c9e7f.firebaseapp.com",
+  projectId: "fii-practic-2023-c9e7f",
+  storageBucket: "fii-practic-2023-c9e7f.appspot.com",
+  messagingSenderId: "900798178320",
+  appId: "1:900798178320:web:19701ec51931eeeb8f5695",
+  measurementId: "G-HG531PRF02"
+};
 
 const app = initializeApp(firebaseConfig)
 
