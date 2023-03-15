@@ -1,14 +1,24 @@
 import React, { useState } from "react"
 import { Input } from "antd"
 import AuthLayout from "../../common/components/layout/Auth"
+import { auth, authService } from "../../utils/firebase"
+import { useNavigate } from "react-router-dom"
 
 function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [signupError, setSignupError] = useState("")
 
   const handleLogin = () => {
-    // TO DO: homework
+    auth
+    .signInWithEmailAndPassword(authService, email, password)
+    .then((userProfile) => {
+      const user = userProfile.user;
+      console.log(userProfile);
+      navigate("/profile");
+    })
+    .catch((err) => setSignupError(err.message))
   }
 
   return (
