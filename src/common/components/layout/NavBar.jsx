@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { Button } from "antd"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faHouseUser,
@@ -18,6 +19,7 @@ const Layout = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
+  background: linear-gradient(to left, #34e89e, #0f3443);
 `
 const Navigation = styled.ul`
   display: flex;
@@ -41,22 +43,45 @@ const Navigation = styled.ul`
     margin-right: 5px;
   }
 `
+const MENU_ITEMS = [
+  {
+    title: "Home",
+    path: "/",
+    icon: faHouseUser,
+  },
+  {
+    title: "Login",
+    path: "/auth/login",
+    icon: faRightToBracket,
+  },
+  { title: "Register", path: "/auth/register", icon: faUserPen },
+]
+
+function renderRoute({ title, path, icon }) {
+  return (
+    <li>
+      <FontAwesomeIcon icon={icon} />
+      <Link to={path}>{title}</Link>
+    </li>
+  )
+}
 
 export default function NavBar() {
+  const navigate = useNavigate()
+
+  function signOut() {
+    localStorage.clear("isLoggedIn")
+    navigate("/auth/login")
+  }
+
   return (
     <Layout>
       <Navigation>
+        {MENU_ITEMS.map(renderRoute)}
         <li>
-          <FontAwesomeIcon icon={faHouseUser} />
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faRightToBracket} />
-          <Link to="/auth/login">Login</Link>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faUserPen} />
-          <Link to="/auth/register">Register</Link>
+          <Button type="text" onClick={() => signOut()}>
+            Log Out
+          </Button>
         </li>
       </Navigation>
     </Layout>

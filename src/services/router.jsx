@@ -3,12 +3,21 @@ import { createBrowserRouter } from "react-router-dom"
 import Home from "../pages/Home"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
+import Find from "../pages/Find"
+import PrivateRoute from "../common/components/PrivateRoute"
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    index: true,
-    element: <Home />,
+    element: <PrivateRoute />,
+    children: [
+      {
+        path: "/",
+        index: true,
+        element: <Home />,
+      },
+      { path: "find", element: <Find /> },
+    ],
   },
   {
     path: "/auth",
