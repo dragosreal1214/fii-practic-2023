@@ -6,6 +6,7 @@ import { Button } from "antd"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faHouseUser,
+  faMagnifyingGlass,
   faRightToBracket,
   faUserPen,
 } from "@fortawesome/free-solid-svg-icons"
@@ -55,6 +56,11 @@ const MENU_ITEMS = [
     icon: faRightToBracket,
   },
   { title: "Register", path: "/auth/register", icon: faUserPen },
+  {
+    title: "Find",
+    path: "/find",
+    icon: faMagnifyingGlass,
+  },
 ]
 
 function renderRoute({ title, path, icon }) {
